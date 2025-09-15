@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Slides - Medical Assistant Training</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #f8fafc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        /* Navigation */
+        .back-nav {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .back-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-link:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        main {
+            padding: 3rem 0;
+        }
+
+        .intro-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .intro-section h2 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .intro-section p {
+            color: #6c757d;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Slides Grid */
+        .slides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .slide-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .slide-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .slide-card.available {
+            border: 2px solid #28a745;
+        }
+
+        .slide-card.available .slide-thumbnail {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        }
+
+        .slide-thumbnail {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+        }
+
+        .slide-thumbnail::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .slide-card:hover .slide-thumbnail::after {
+            opacity: 1;
+        }
+
+        .slide-content {
+            padding: 1.5rem;
+        }
+
+        .slide-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .slide-description {
+            color: #6c757d;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .slide-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #95a5a6;
+        }
+
+        .slide-duration {
+            background: #e9ecef;
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+        }
+
+        .available-badge {
+            background: #28a745;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Coming Soon Section */
+        .coming-soon {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .coming-soon h3 {
+            color: #667eea;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .coming-soon p {
+            color: #6c757d;
+            margin-bottom: 2rem;
+        }
+
+        .notification-form {
+            max-width: 400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .notification-form input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .notification-form button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .notification-form button:hover {
+            background: #5a6fd8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .slides-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .notification-form {
+                flex-direction: column;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 2% auto;
+            padding: 0;
+            border-radius: 12px;
+            width: 95%;
+            max-width: 1000px;
+            max-height: 90vh;
+            overflow: hidden;
+        }
+
+        .modal-header {
+            padding: 1rem 2rem;
+            background: #667eea;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .close {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .close:hover {
+            opacity: 0.8;
+        }
+
+        .modal-body {
+            padding: 0;
+            height: calc(90vh - 80px);
+        }
+
+        .modal-body iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .coming-soon-modal {
+            padding: 2rem;
+            text-align: center;
+        }
+    </style>
+<script type="text/javascript" nonce="cce8e36f88a54954b8e1bae15ed" src="//local.adguard.org?ts=1757969281780&amp;type=content-script&amp;dmn=private-us-east-1.manuscdn.com&amp;url=https%3A%2F%2Fprivate-us-east-1.manuscdn.com%2FsessionFile%2F1Jc0VDvh0eA2AMecKBisW9%2Fsandbox%2F1lwIixPPasFLcZP3orddDS_1757974910644_na1fn_L2hvbWUvdWJ1bnR1L3NsaWRlc191cGRhdGVk.html%3FPolicy%3DeyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvMUpjMFZEdmgwZUEyQU1lY0tCaXNXOS9zYW5kYm94LzFsd0lpeFBQYXNGTGNaUDNvcmRkRFNfMTc1Nzk3NDkxMDY0NF9uYTFmbl9MMmh2YldVdmRXSjFiblIxTDNOc2FXUmxjMTkxY0dSaGRHVmsuaHRtbCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19%26Key-Pair-Id%3DK2HSFNDJXOU9YS%26Signature%3DSZy3awmWK9OklQfXcqgobRGkx60ciClwYsGovJmHSDA03seLe~qFz0hy7epXFiTDvoAT2wrFkuGGYV6WyDlf554Ka49AJmTXcXddSmYnBTsBTO6k~n410o-LwIA3LM27RFJx9S~5qELqo1OXor2wdrdrqBGStpQIwuhlWRVW9R8hUihKVfsUbiI2r~HxV5M5VNsUXA~Lef435y-x33qlqqnhpfJNGDn2Ymkzsgnw9f0D~exk8-cf5mMXVisG7vTly5atUvHXPfjXRyEUNfqMEErlE~LtBzMysMs~sylfZXAM8nOAE53rwI6bUyk0cd56R5HPG1wmoQ54QEaKxftlOg__&amp;app=com.google.Chrome&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script><script type="text/javascript" nonce="cce8e36f88a54954b8e1bae15ed" src="//local.adguard.org?ts=1757969281780&amp;name=AdGuard%20Extra&amp;type=user-script"></script></head>
+<body>
+    <header>
+        <div class="container">
+            <h1>📊 Google Slides Presentations</h1>
+            <p class="subtitle">Interactive training materials for Medical Assistants</p>
+        </div>
+    </header>
+
+    <nav class="back-nav">
+        <div class="container">
+            <a href="index.html" class="back-link">
+                ← Back to Training Hub
+            </a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <!-- Introduction Section -->
+            <section class="intro-section">
+                <h2>Professional Training Presentations</h2>
+                <p>Access comprehensive Google Slides presentations covering essential Medical Assistant skills, procedures, and best practices. Each presentation is designed to enhance your learning experience with visual aids and interactive content.</p>
+            </section>
+
+            <!-- Slides Grid -->
+            <section class="slides-grid">
+                <!-- Slide 1: Scheduling (AVAILABLE) -->
+                <div class="slide-card available" onclick="openSlide('scheduling')">
+                    <div class="slide-thumbnail">
+                        📅
+                    </div>
+                    <div class="slide-content">
+                        <div class="slide-title">Scheduling</div>
+                        <div class="slide-description">Master appointment scheduling, patient coordination, and calendar management for efficient healthcare operations.</div>
+                        <div class="slide-meta">
+                            <span>Interactive slides</span>
+                            <span class="available-badge">AVAILABLE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2: HIPAA Training -->
+                <div class="slide-card" onclick="openSlide('hipaa')">
+                    <div class="slide-thumbnail">
+                        🔒
+                    </div>
+                    <div class="slide-content">
+                        <div class="slide-title">HIPAA Privacy & Security</div>
+                        <div class="slide-description">Comprehensive overview of HIPAA regulations, patient privacy rights, and security protocols for medical assistants.</div>
+                        <div class="slide-meta">
+                            <span>25 slides</span>
+                            <span class="slide-duration">30 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3: EMR Systems -->
+                <div class="slide-card" onclick="openSlide('emr')">
+                    <div class="slide-thumbnail">
+                        💻
+                    </div>
+                    <div class="slide-content">
+                        <div class="slide-title">Electronic Medical Records</div>
+                        <div class="slide-description">Learn to navigate EMR systems, input patient data, and maintain accurate digital health records.</div>
+                        <div class="slide-meta">
+                            <span>32 slides</span>
+                            <span class="slide-duration">45 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 4: Patient Communication -->
+                <div class="slide-card" onclick="openSlide('communication')">
+                    <div class="slide-thumbnail">
+                        💬
+                    </div>
+                    <div class="slide-content">
+                        <div class="slide-title">Patient Communication Skills</div>
+                        <div class="slide-description">Effective communication strategies for patient interactions, difficult conversations, and cultural sensitivity.</div>
+                        <div class="slide-meta">
+                            <span>28 slides</span>
+                            <span class="slide-duration">35 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 5: Insurance Verification -->
+                <div class="slide-card" onclick="openSlide('insurance')">
+                    <div class="slide-thumbnail">
+                        📋
+                    </div>
+                    <div class="slide-content">
+                        <div class="slide-title">Insurance Verification Process</div>
+                        <div class="slide-description">Step-by-step guide to verifying patient insurance, understanding coverage, and handling claims.</div>
+                        <div class="slide-meta">
+                            <span>22 slides</span>
+                            <span class="slide-duration">25 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 6: Telehealth Procedures -->
+                <div class="slide-card" onclick="openSlide('telehealth')">
+                    <div class="slide-thumbnail">
+                        📱
+                    </div>
+                    <div class="slide-content">
+                        <div class="slide-title">Telehealth Best Practices</div>
+                        <div class="slide-description">Virtual care protocols, technology setup, and patient support for remote medical consultations.</div>
+                        <div class="slide-meta">
+                            <span>20 slides</span>
+                            <span class="slide-duration">20 min</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Coming Soon Section -->
+            <section class="coming-soon">
+                <h3>More Presentations Coming Soon!</h3>
+                <p>We're continuously developing new training materials. Get notified when new Google Slides presentations are available.</p>
+                <form class="notification-form" onsubmit="subscribeNotifications(event)">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Notify Me</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal for slide preview -->
+    <div id="slideModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Presentation</h3>
+                <button class="close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openSlide(slideType) {
+            const slideInfo = {
+                'scheduling': {
+                    title: 'Scheduling',
+                    type: 'iframe',
+                    content: '<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRahl9m4aEFGJDiUBIpMU2AjIzXKKlZAMjJmwJQXpTHpiY-x7BZco0tkB8spcIEyJ5Uesa4HnbEFHZg/embed?start=false&loop=false&delayms=60000" frameborder="0" width="100%" height="100%" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>'
+                },
+                'hipaa': {
+                    title: 'HIPAA Privacy & Security',
+                    type: 'coming-soon',
+                    description: 'This comprehensive HIPAA training presentation covers patient privacy rights, security protocols, and compliance requirements for medical assistants.'
+                },
+                'emr': {
+                    title: 'Electronic Medical Records',
+                    type: 'coming-soon',
+                    description: 'Learn EMR system navigation, data entry best practices, and digital record management in this detailed presentation.'
+                },
+                'communication': {
+                    title: 'Patient Communication Skills',
+                    type: 'coming-soon',
+                    description: 'Develop effective communication strategies for various patient interactions and challenging situations.'
+                },
+                'insurance': {
+                    title: 'Insurance Verification Process',
+                    type: 'coming-soon',
+                    description: 'Master the insurance verification workflow with step-by-step guidance and real-world examples.'
+                },
+                'telehealth': {
+                    title: 'Telehealth Best Practices',
+                    type: 'coming-soon',
+                    description: 'Understand virtual care protocols and technology requirements for successful telehealth sessions.'
+                }
+            };
+
+            const info = slideInfo[slideType];
+            if (info) {
+                document.getElementById('modalTitle').textContent = info.title;
+                const modalBody = document.getElementById('modalBody');
+                
+                if (info.type === 'iframe') {
+                    modalBody.innerHTML = info.content;
+                } else {
+                    modalBody.innerHTML = `
+                        <div class="coming-soon-modal">
+                            <p>${info.description}</p>
+                            <p><strong>What you can do:</strong></p>
+                            <ul style="text-align: left; margin: 1rem 0; max-width: 400px; margin-left: auto; margin-right: auto;">
+                                <li>Bookmark this page for easy access</li>
+                                <li>Subscribe to notifications above</li>
+                                <li>Check back regularly for updates</li>
+                                <li>Contact your supervisor for immediate training needs</li>
+                            </ul>
+                            <button onclick="closeModal()" style="background: #667eea; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; margin-top: 1rem;">Got it!</button>
+                        </div>
+                    `;
+                }
+                
+                document.getElementById('slideModal').style.display = 'block';
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('slideModal').style.display = 'none';
+            // Clear iframe content to stop any videos/audio
+            document.getElementById('modalBody').innerHTML = '';
+        }
+
+        function subscribeNotifications(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input[type="email"]').value;
+            alert(`Thank you! We'll notify ${email} when new presentations are available.`);
+            event.target.reset();
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('slideModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Add smooth animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.slide-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
