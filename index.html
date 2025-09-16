@@ -328,6 +328,11 @@
     <div class="resource-title">Electronic Medical Records</div>
     <div class="resource-desc">Access EMR training and system resources</div>
 </div>
+                    <div class="resource-card" onclick="openResource('insurance')">
+       <div class="resource-icon">💳</div>
+       <div class="resource-title">Insurance Verification</div>
+       <div class="resource-desc">Learn patient eligibility checks and coverage verification</div>
+   </div>
                     <div class="resource-card" onclick="openResource('videos')">
                         <div class="resource-icon">🎥</div>
                         <div class="resource-title">Training Videos</div>
@@ -504,6 +509,9 @@
                     case 'emr':
     window.open('emr.html', '_blank');
     break;
+                 case 'insurance':
+        window.open('insurance-verification.html', '_blank');
+        break;   
                 default:
                     alert('Resource not found: ' + type);
             }
