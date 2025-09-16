@@ -248,27 +248,79 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 1rem;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            .nav-container {
-                gap: 1rem;
-            }
-
-            .position-types {
-                grid-template-columns: 1fr;
-            }
-
-            .resource-grid {
-                grid-template-columns: 1fr;
-            }
+/* Google Slides Style Cards */
+        .slides-style-card {
+            background: white;
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            padding: 0;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            overflow: hidden;
+            box-shadow: 0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
+            height: 280px;
         }
+
+        .slides-style-card:hover {
+            box-shadow: 0 2px 6px 2px rgba(60,64,67,0.15), 0 8px 24px 4px rgba(60,64,67,0.15);
+            transform: translateY(-2px);
+        }
+
+        .card-header {
+            height: 140px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-header.emr { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-header.insurance { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .card-header.videos { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .card-header.slides { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .card-header.workflow { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+        .card-header.tips { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
+        .card-header.reference { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+
+        .card-icon-large {
+            width: 48px;
+            height: 48px;
+            color: white;
+            font-size: 2.5rem;
+        }
+
+        .card-content {
+            padding: 16px;
+            height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: #202124;
+            margin-bottom: 4px;
+            line-height: 20px;
+        }
+
+        .card-description {
+            font-size: 14px;
+            color: #5f6368;
+            line-height: 18px;
+            flex-grow: 1;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #5f6368;
+            margin-top: auto;
+        }
+    </style>
     </style>
 <script type="text/javascript" nonce="cce8e36f88a54954b8e1bae15ed" src="//local.adguard.org?ts=1757969281780&amp;type=content-script&amp;dmn=private-us-east-1.manuscdn.com&amp;url=https%3A%2F%2Fprivate-us-east-1.manuscdn.com%2FsessionFile%2F1Jc0VDvh0eA2AMecKBisW9%2Fsandbox%2FEjabiCi8GmyoG7u1llfODk_1757974967479_na1fn_L2hvbWUvdWJ1bnR1L2luZGV4.html%3FPolicy%3DeyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvMUpjMFZEdmgwZUEyQU1lY0tCaXNXOS9zYW5kYm94L0VqYWJpQ2k4R215b0c3dTFsbGZPRGtfMTc1Nzk3NDk2NzQ3OV9uYTFmbl9MMmh2YldVdmRXSjFiblIxTDJsdVpHVjQuaHRtbCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19%26Key-Pair-Id%3DK2HSFNDJXOU9YS%26Signature%3DPSucRVEM5295fTWIUq8p7o-mfhtPAvo9xtdMbdfNaHi8jFTSqtFE4Wju5axpH7so-~31K0LnBO4Ney~nNRvqQRsHryGoh-AEitzBCPyPGFnUioSP66Nqwp1Fpb8gvuPONksgm~ZYavHXo-nkJ4bCowMsYICy~tA6UyuVQTVEF22YGtJLEFyQG~H-Bssm4n4Ubg6Gdgnq0yGC9BVZJpX-4epHbtv4paMX2tEgD~Z7JSbU0jHKhoEEATqWDnrPhDzmDZ27ue5MJ9uoJjcLNzvBsbgdGbPWiYZ1yEKAXleQxxX4J22t89F9vkagT84xaZgG6HlVH3e0~7NgYYhzf1is7w__&amp;app=com.google.Chrome&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script><script type="text/javascript" nonce="cce8e36f88a54954b8e1bae15ed" src="//local.adguard.org?ts=1757969281780&amp;name=AdGuard%20Extra&amp;type=user-script"></script></head>
 <body>
@@ -323,45 +375,102 @@
             <section id="resources" class="section">
                 <h2>Training Resources</h2>
                 <div class="resource-grid">
-                    <div class="resource-card" onclick="openResource('emr')">
-    <div class="resource-icon">📋</div>
-    <div class="resource-title">Electronic Medical Records</div>
-    <div class="resource-desc">Access EMR training and system resources</div>
-</div>
-                    <div class="resource-card" onclick="openResource('insurance')">
-       <div class="resource-icon">💳</div>
-       <div class="resource-title">Insurance Verification</div>
-       <div class="resource-desc">Learn patient eligibility checks and coverage verification</div>
-   </div>
-                    <div class="resource-card" onclick="openResource('videos')">
-                        <div class="resource-icon">🎥</div>
-                        <div class="resource-title">Training Videos</div>
-                        <div class="resource-desc">Essential video tutorials covering all aspects of your role</div>
+                    <div class="slides-style-card" onclick="openResource('emr')">
+                        <div class="card-header emr">
+                            <div class="card-icon-large">💻</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-title">Electronic Medical Records</div>
+                            <div class="card-description">Learn to navigate EMR systems, input patient data, and maintain accurate digital health records.</div>
+                            <div class="card-meta">
+                                <span>32 slides</span>
+                                <span>45 min</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="resource-card" onclick="openResource('slides')">
-                        <div class="resource-icon">📊</div>
-                        <div class="resource-title">Google Slides</div>
-                        <div class="resource-desc">Google Slides presentations on key processes and procedures</div>
-                   
-                    <div class="resource-card" onclick="openResource('workflow')">
-                        <div class="resource-icon">📋</div>
-                        <div class="resource-title">Workflow Knowledge</div>
-                        <div class="resource-desc">Step-by-step guides for daily workflows and processes</div>
+
+                    <div class="slides-style-card" onclick="openResource('insurance')">
+                        <div class="card-header insurance">
+                            <div class="card-icon-large">🔒</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-title">Insurance Verification</div>
+                            <div class="card-description">Master insurance verification processes, eligibility checks, and coverage verification procedures.</div>
+                            <div class="card-meta">
+                                <span>25 slides</span>
+                                <span>30 min</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="resource-card" onclick="openResource('tips')">
-                        <div class="resource-icon">💡</div>
-                        <div class="resource-title">What I Wish I Knew</div>
-                        <div class="resource-desc">Insider tips and lessons learned from experienced team members</div>
+
+                    <div class="slides-style-card" onclick="openResource('videos')">
+                        <div class="card-header videos">
+                            <div class="card-icon-large">🎥</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-title">Training Videos</div>
+                            <div class="card-description">Essential video tutorials covering all aspects of medical assistant responsibilities and workflows.</div>
+                            <div class="card-meta">
+                                <span>Video series</span>
+                                <span>Available soon</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="resource-card" onclick="openResource('reference')">
-                        <div class="resource-icon">📚</div>
-                        <div class="resource-title">Quick Reference</div>
-                        <div class="resource-desc">Downloadable guides and cheat sheets for easy access</div>
+
+                    <div class="slides-style-card" onclick="openResource('slides')">
+                        <div class="card-header slides">
+                            <div class="card-icon-large">📊</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-title">Google Slides</div>
+                            <div class="card-description">Interactive presentation slides covering key medical assistant processes and procedures.</div>
+                            <div class="card-meta">
+                                <span>Presentation deck</span>
+                                <span>Available</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="resource-card" onclick="openResource('ama')">
-                        <div class="resource-icon">🏥</div>
-                        <div class="resource-title">AMA Steps Forward™</div>
-                        <div class="resource-desc">Professional development module from the American Medical Association</div>
+
+                    <div class="slides-style-card" onclick="openResource('workflow')">
+                        <div class="card-header workflow">
+                            <div class="card-icon-large">📋</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-title">Workflow Knowledge</div>
+                            <div class="card-description">Step-by-step guides for daily workflows and standard operating procedures.</div>
+                            <div class="card-meta">
+                                <span>Interactive guide</span>
+                                <span>Available soon</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slides-style-card" onclick="openResource('tips')">
+                        <div class="card-header tips">
+                            <div class="card-icon-large">💡</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-title">What I Wish I Knew</div>
+                            <div class="card-description">Insider tips and lessons learned from experienced medical assistant team members.</div>
+                            <div class="card-meta">
+                                <span>Tips & insights</span>
+                                <span>Available soon</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slides-style-card" onclick="openResource('reference')">
+                        <div class="card-header reference">
+                            <div class="card-icon-large">📚</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-title">Quick Reference</div>
+                            <div class="card-description">Downloadable guides, cheat sheets, and quick reference materials for easy access.</div>
+                            <div class="card-meta">
+                                <span>Reference materials</span>
+                                <span>Available soon</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -500,7 +609,6 @@
         window.open('insurance-verification.html', '_blank');
         break;
     case 'videos':
-    case 'youtube':
     case 'workflow':
     case 'tips':
     case 'reference':
