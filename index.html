@@ -323,6 +323,11 @@
             <section id="resources" class="section">
                 <h2>Training Resources</h2>
                 <div class="resource-grid">
+                    <div class="resource-card" onclick="openResource('emr')">
+    <div class="resource-icon">📋</div>
+    <div class="resource-title">Electronic Medical Records</div>
+    <div class="resource-desc">Access EMR training and system resources</div>
+</div>
                     <div class="resource-card" onclick="openResource('videos')">
                         <div class="resource-icon">🎥</div>
                         <div class="resource-title">Training Videos</div>
@@ -496,6 +501,9 @@
                 case 'ama':
                     alert('This resource will be available soon!');
                     break;
+                    case 'emr':
+    window.open('emr.html', '_blank');
+    break;
                 default:
                     alert('Resource not found: ' + type);
             }
