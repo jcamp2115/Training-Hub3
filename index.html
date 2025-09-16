@@ -495,26 +495,26 @@
         window.openResource = function(type) {
             console.log('Opening resource:', type); // Debug log
             switch(type) {
-                case 'slides':
-                    window.open('slides.html', '_blank');
-                    break;
-                case 'videos':
-                case 'youtube':
-                case 'workflow':
-                case 'tips':
-                case 'reference':
-                case 'ama':
-                    alert('This resource will be available soon!');
-                    break;
-                    case 'emr':
-    window.open('emr.html', '_blank');
-    break;
-                 case 'insurance':
+    case 'slides':
+        window.open('slides.html', '_blank');
+        break;
+    case 'emr':
+        window.open('emr.html', '_blank');
+        break;
+    case 'insurance':
         window.open('insurance-verification.html', '_blank');
-        break;   
-                default:
-                    alert('Resource not found: ' + type);
-            }
+        break;
+    case 'videos':
+    case 'youtube':
+    case 'workflow':
+    case 'tips':
+    case 'reference':
+    case 'ama':
+        alert('This resource will be available soon!');
+        break;
+    default:
+        alert('Resource not found: ' + type);
+}
         }
 
         // Wait for DOM to be fully loaded
